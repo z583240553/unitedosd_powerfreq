@@ -49,7 +49,8 @@ local status_cmds = {
   [31] = "AnglecontactorN",
   [32] = "AirloadvalveN",
   [33] = "AirsolenoidvalveN",
-  [34] = "FancontactorN"
+  [34] = "FancontactorN",
+  [35] = "Inletpress"
 }
 --Json的Key，用于工频螺杆机运行状态1数据  对应工频螺杆机云端显示表
 local status1_bit_cmds = {
@@ -219,6 +220,8 @@ function _M.decode(payload)
 			for i=1,6,1 do
 				packet[ status_cmds[28+i] ] = databuff_table[30+i]*10
 			end
+
+			packet[ status_cmds[35] ] =(bit.lshift( getnumber(92) , 8 ) + getnumber(93)) /10  --最后添加的进气压力
 
 			--解析运行状态1(高字节对应getnumber[84],低字节对应getnumber[85])的每个bit位值
 			for j=0,1 do
