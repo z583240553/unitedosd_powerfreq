@@ -218,7 +218,7 @@ function _M.decode(payload)
 				packet[ status_cmds[28+i] ] = databuff_table[30+i]*10
 			end
 
-			--解析运行状态1(高字节对应getnumber[84],低字节对应getnumber[85])的每个bit位值
+		--[[	--解析运行状态1(高字节对应getnumber[84],低字节对应getnumber[85])的每个bit位值
 			for j=0,1 do
 				for i=0,7 do
 					local y = bit.band(getnumber(85-j),bit.lshift(1,i))
@@ -288,7 +288,7 @@ function _M.decode(payload)
 			for i=1,12,1 do
 				packet[ status4_bit_cmds[i] ] = bitbuff_table[i]
 			end
-			
+		]]	
 		end
 	else 
 		local head = string.sub(strload,3,6)
