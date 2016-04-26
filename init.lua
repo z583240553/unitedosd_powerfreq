@@ -276,7 +276,7 @@ function _M.decode(payload)
 			--解析运行状态4(高字节对应getnumber[90],低字节对应getnumber[91])的每个bit位值
 			for j=0,1 do
 				for i=0,7 do
-					local y = bit.band(getnumber((90+j)),bit.lshift(1,i))
+					local y = bit.band(getnumber(90+j),bit.lshift(1,i))
 					if(y == 0) then 
 		               bitbuff_table[j*8+i+1] = 0
 		            else
