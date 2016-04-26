@@ -221,7 +221,7 @@ function _M.decode(payload)
 			--解析运行状态1(高字节对应getnumber[84],低字节对应getnumber[85])的每个bit位值
 			for j=0,1 do
 				for i=0,7 do
-					local y = bit.band(getnumber(84+j),bit.lshift(1,i))
+					local y = bit.band(getnumber((85-j)),bit.lshift(1,i))  --先高字节解析后低字节解析
 					if(y == 0) then 
 		               bitbuff_table[j*8+i+1] = 0
 		            else
