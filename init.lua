@@ -236,11 +236,11 @@ function _M.decode(payload)
 			for i=1,5,1 do
 				packet[ status1_bit_cmds[8+i] ] = bitbuff_table[i+11]
 			end
---[[
+
 			--解析运行状态2(高字节对应getnumber[86],低字节对应getnumber[87])的每个bit位值
 			for j=0,1 do
 				for i=0,7 do
-					local y = bit.band(getnumber((87-j)),bit.lshift(1,i))
+					local y = bit.band(getnumber((87-j)),bit.lshift(1,i)) --先低字节解析后高字节解析
 					if(y == 0) then 
 		               bitbuff_table[j*8+i+1] = 0
 		            else
@@ -260,7 +260,7 @@ function _M.decode(payload)
 			--解析运行状态3(高字节对应getnumber[88],低字节对应getnumber[89])的每个bit位值
 			for j=0,1 do
 				for i=0,7 do
-					local y = bit.band(getnumber((89-j)),bit.lshift(1,i))
+					local y = bit.band(getnumber((89-j)),bit.lshift(1,i)) --先低字节解析后高字节解析
 					if(y == 0) then 
 		               bitbuff_table[j*8+i+1] = 0
 		            else
@@ -276,7 +276,7 @@ function _M.decode(payload)
 			--解析运行状态4(高字节对应getnumber[90],低字节对应getnumber[91])的每个bit位值
 			for j=0,1 do
 				for i=0,7 do
-					local y = bit.band(getnumber(90+j),bit.lshift(1,i))
+					local y = bit.band(getnumber((91-j)),bit.lshift(1,i)) --先低字节解析后高字节解析
 					if(y == 0) then 
 		               bitbuff_table[j*8+i+1] = 0
 		            else
@@ -287,8 +287,8 @@ function _M.decode(payload)
 			--将运行状态4的每位bit值转化为JSON格式数据
 			for i=1,12,1 do
 				packet[ status4_bit_cmds[i] ] = bitbuff_table[i]
-			end
-		]]	
+			end	
+			
 		end
 	else 
 		local head = string.sub(strload,3,6)
