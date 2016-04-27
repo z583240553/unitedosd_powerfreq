@@ -215,37 +215,39 @@ function _M.decode(payload)
 			for i=1,3,1 do
 				local x = bit.band(databuff_table[4+i],bit.lshift(1,15))
 				if(x == 0) then
-					packet[ status_cmds[2+i] ] = databuff_table[4+i]/10     --正压力
+					packet[ status_cmds[2+i] ] = databuff_table[4+i]/10                  --正压力
 				else 
-					packet[ status_cmds[2+i] ] = -(((0xffff-databuff_table[4+i])+1)/10)    --负压力
-					packet['test1'] = 0xffff-databuff_table[4+i]
+					packet[ status_cmds[2+i] ] = -((0xffff-databuff_table[4+i]+1)/10)    --负压力
 				end    
 			end
-			--[[--温度组
+
+			--温度组
 			for i=1,4,1 do
 				local x = bit.band(databuff_table[7+i],bit.lshift(1,15))
 				if(x == 0) then
 					packet[ status_cmds[5+i] ] = databuff_table[7+i]                 --正温度
 				else
-					packet[ status_cmds[5+i] ] = -(bit.bnot(databuff_table[7+i])+1)  --负温度      
+					packet[ status_cmds[5+i] ] = -(0xffff-databuff_table[7+i]+1)     --负温度      
 			end
-			]]
+	
 			--电流+时间组
 			for i=1,19,1 do
 				packet[ status_cmds[9+i] ] = databuff_table[11+i]         
 			end
+
 			--运行次数组
 			for i=1,6,1 do
 				packet[ status_cmds[28+i] ] = databuff_table[30+i]*10     
 			end
-			--[[--最后添加的进气压力
+
+			--最后添加的进气压力
 			if(bit.band(getnumber(92),bit.lshift(1,7) == 0) then                
 				packet[ status_cmds[35] ] =(bit.lshift(getnumber(92),8) + getnumber(93)) /10   --正压力
 			else
 				local m = bit.lshift(getnumber(92),8) + getnumber(93)
-				packet[ status_cmds[35] ] = -(bit.bnot(m)+1)/10                                  --负压力
+				packet[ status_cmds[35] ] = -((0xffff-m+1)/10)                                 --负压力
 			end
-			]]
+			
 			--解析运行状态1(高字节对应getnumber[84],低字节对应getnumber[85])的每个bit位值
 			for j=0,1 do
 				for i=0,7 do
