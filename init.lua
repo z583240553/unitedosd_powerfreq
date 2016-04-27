@@ -217,7 +217,7 @@ function _M.decode(payload)
 				if(x == 0) then
 					packet[ status_cmds[2+i] ] = databuff_table[4+i]/10     --正压力
 				else 
-				--	packet[ status_cmds[2+i] ] = -(bit.bnot(databuff_table[4+i])+1)/10     --负压力
+					packet[ status_cmds[2+i] ] = -((bit.bnot(databuff_table[4+i])+1)/10)    --负压力
 				end    
 			end
 			--[[--温度组
