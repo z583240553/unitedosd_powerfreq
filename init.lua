@@ -217,10 +217,10 @@ function _M.decode(payload)
 				if(x == 0) then
 					packet[ status_cmds[2+i] ] = databuff_table[4+i]/10     --正压力
 				else 
-					packet[ status_cmds[2+i] ] = -(bit.bnot(databuff_table[4+i])+1)/10     --负压力
+				--	packet[ status_cmds[2+i] ] = -(bit.bnot(databuff_table[4+i])+1)/10     --负压力
 				end    
 			end
-			--温度组
+			--[[--温度组
 			for i=1,4,1 do
 				local x = bit.band(databuff_table[7+i],bit.lshift(1,15))
 				if(x == 0) then
@@ -228,6 +228,7 @@ function _M.decode(payload)
 				else
 					packet[ status_cmds[5+i] ] = -(bit.bnot(databuff_table[7+i])+1)  --负温度      
 			end
+			]]
 			--电流+时间组
 			for i=1,19,1 do
 				packet[ status_cmds[9+i] ] = databuff_table[11+i]         
