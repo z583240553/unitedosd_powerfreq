@@ -227,7 +227,8 @@ function _M.decode(payload)
 				if(x == 0) then
 					packet[ status_cmds[5+i] ] = databuff_table[7+i]                 --正温度
 				else
-					packet[ status_cmds[5+i] ] = -(0xffff-databuff_table[7+i]+1)     --负温度      
+					packet[ status_cmds[5+i] ] = -(0xffff-databuff_table[7+i]+1)     --负温度  
+				end    
 			end
 	
 			--电流+时间组
@@ -240,14 +241,14 @@ function _M.decode(payload)
 				packet[ status_cmds[28+i] ] = databuff_table[30+i]*10     
 			end
 
-			--[[--最后添加的进气压力
-			if(bit.band(getnumber(92),bit.lshift(1,7) == 0) then                
-				packet[ status_cmds[35] ] =(bit.lshift(getnumber(92),8) + getnumber(93)) /10   --正压力
+			--最后添加的进气压力
+			if(bit.band(getnumber(92),bit.lshift(1,7)) == 0) then                
+				packet[ status_cmds[35] ] =(bit.lshift(getnumber(92),8) + getnumber(93))/10   --正压力
 			else
 				local m = bit.lshift(getnumber(92),8) + getnumber(93)
 				packet[ status_cmds[35] ] = -((0xffff-m+1)/10)                                 --负压力
 			end
-			]]
+			
 			--解析运行状态1(高字节对应getnumber[84],低字节对应getnumber[85])的每个bit位值
 			for j=0,1 do
 				for i=0,7 do
