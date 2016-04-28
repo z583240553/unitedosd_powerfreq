@@ -54,66 +54,66 @@ local status_cmds = {
 }
 --Json的Key，用于工频螺杆机运行状态1数据  对应工频螺杆机云端显示表
 local status1_bit_cmds = {
-  [1] = "RunState1_01",
-  [2] = "RunState1_02",
-  [3] = "RunState1_03",
-  [4] = "RunState1_04",
-  [5] = "RunState1_05",
-  [6] = "RunState1_06",
-  [7] = "RunState1_07",
-  [8] = "RunState1_08",
-  [9] = "RunState1_09",
-  [10] = "RunState1_10",
-  [11] = "RunState1_11",
-  [12] = "RunState1_12",
-  [13] = "RunState1_13"
+  [1] = "Srun",
+  [2] = "Sload",
+  [3] = "Fhighsyspresswarn",
+  [4] = "Fhighexhpresswarn",
+  [5] = "Fhighsystempwarn",
+  [6] = "Fhighexhtempwarn",
+  [7] = "Fhighfbearingtempwarn",
+  [8] = "Fhighbbearingtempwarn",
+  [9] = "Fhighsyspressstop",
+  [10] = "Fhighexhpressstop",
+  [11] = "Fhighsystempstop",
+  [12] = "Fhighexhtempstop",
+  [13] = "Fhighfbearingtempstop"
 }
 --Json的Key，用于工频螺杆机运行状态2数据  对应工频螺杆机云端显示表
 local status2_bit_cmds = {
-  [1] = "RunState2_01",
-  [2] = "RunState2_02",
-  [3] = "RunState2_03",
-  [4] = "RunState2_04",
-  [5] = "RunState2_05",
-  [6] = "RunState2_06",
-  [7] = "RunState2_07",
-  [8] = "RunState2_08",
-  [9] = "RunState2_09",
-  [10] = "RunState2_10"
+  [1] = "Fhighbbearingtempstop",
+  [2] = "Fsyspresssenfault",
+  [3] = "Fexhpresssenfault",
+  [4] = "Foilpresssenfault",
+  [5] = "Fsystempsenfault",
+  [6] = "Fexhtempsenfault",
+  [7] = "Ffbearingtempsenfault",
+  [8] = "Fbbearingtempsenfault",
+  [9] = "Fgreasemaintaintime",
+  [10] = "Flubemaintaintime"
 }
 --Json的Key，用于工频螺杆机运行状态3数据  对应工频螺杆机云端显示表
 local status3_bit_cmds = {
-  [1] = "RunState3_01",
-  [2] = "RunState3_02",
-  [3] = "RunState3_03",
-  [4] = "RunState3_04",
-  [5] = "RunState3_05",
-  [6] = "RunState3_06",
-  [7] = "RunState3_07",
-  [8] = "RunState3_08",
-  [9] = "RunState3_09",
-  [10] = "RunState3_10",
-  [11] = "RunState3_11",
-  [12] = "RunState3_12",
-  [13] = "RunState3_13",
-  [14] = "RunState3_14",
-  [15] = "RunState3_15",
-  [16] = "RunState3_16"
+  [1] = "Foilgasmaintaintime",
+  [2] = "Foilfiltermaintaintime",
+  [3] = "Fairfiltermaintaintime",
+  [4] = "Fexhpipemaintaintime",
+  [5] = "Fmotorbearingmaintaintime",
+  [6] = "Fsafetyvalvemaintaintime",
+  [7] = "Fminivalvemaintaintime",
+  [8] = "Fhostblademaintaintime",
+  [9] = "Fhostinsulationmaintaintime",
+  [10] = "Fheadbearingmaintaintime",
+  [11] = "Fheadsealmaintaintime",
+  [12] = "Fheadgearmaintaintime",
+  [13] = "Fairloadvalvemaintainnum",
+  [14] = "Fairsolenoidvalvemaintainnum",
+  [15] = "Ffanbearingmaintainnum",
+  [16] = "Ffanblademaintainnum"
 }
 --Json的Key，用于工频螺杆机运行状态4数据  对应工频螺杆机云端显示表
 local status4_bit_cmds = {
-  [1] = "RunState4_01",
-  [2] = "RunState4_02",
-  [3] = "RunState4_03",
-  [4] = "RunState4_04",
-  [5] = "RunState4_05",
-  [6] = "RunState4_06",
-  [7] = "RunState4_07",
-  [8] = "RunState4_08",
-  [9] = "RunState4_09",
-  [10] = "RunState4_10",
-  [11] = "RunState4_11",
-  [12] = "RunState4_12",
+  [1] = "Fmaincontactormaintainnum",
+  [2] = "Fstarcontactormaintainnum",
+  [3] = "Fanglecontactormaintainnum",
+  [4] = "Ffancontactormaintainnum",
+  [5] = "Fphaseerror",
+  [6] = "Fhostoverload",
+  [7] = "Ffanoverload",
+  [8] = "Foilpressswitchalarm",
+  [9] = "Foilfilterpressalarm",
+  [10] = "Flongstop",
+  [11] = "Ffault",
+  [12] = "Fwarn"
 }
 
 --FCS校验
